@@ -5,13 +5,15 @@ import time
 import random
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def test(request):
     start_time = time.time()
-    N = 100000
-    step = 50
-    leaves_pos = [random.randint(1, step) for i in range(N)]
+
+    step = int(request.data['riverWidth'])
+    position_data = request.data['leavesPosition'].strip()
+    leaves_pos = [int(x) for x in position_data.split(' ')]
+
     earliest_time_pos = {}
     for i in range(step):
         earliest_time_pos.update({i + 1: []})
