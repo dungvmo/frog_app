@@ -1,6 +1,6 @@
-from django.urls import path, include
-from .views import test
+from django.urls import path
+from .views import frog_cross_river
 
 urlpatterns = [
-    path('', test, name='test'),
+    path('', frog_cross_river, name='test'),
 ]
